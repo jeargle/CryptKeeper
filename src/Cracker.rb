@@ -24,7 +24,8 @@ class RotCracker
 end
 
 
-# Cracks CustomKey
+# Cracks RotKey, CustomKey
+# Cracks monoalphabetic cypher
 class StatCracker
 
   def initialize(text=nil)
@@ -33,7 +34,7 @@ class StatCracker
     else
       @statAlphabet = "ETAOINSHRDLCUMWFGYPBVKJXQZ"
     end
-    puts "statAlphabet: #{@statAlphabet}"
+    puts "statAlphabet:   #{@statAlphabet}"
   end
 
   # Create letter-ordering statistics from a
@@ -93,7 +94,7 @@ class StatCracker
 
   def switchKeys(key1, key2)
     if !@keyHash then
-      puts "WTF, dumbass?  You need to generate a key first!"
+      puts "switchKeys: WTF, dumbass?  You need to generate a key first!"
       return
     end
     if !@keyHash[key1] || !@keyHash[key2] then

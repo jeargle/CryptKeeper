@@ -85,7 +85,7 @@ class RotKey
 end
 
 
-# Cracked by VigenereKey
+# Cracked by VigenereCracker
 #   Need alphabet and keyword for cycling through the alphabet.
 class VigenereKey
 
@@ -158,3 +158,70 @@ class HomophonicKey
 end
 
 
+# 
+class EnigmaKey
+
+  def initialize
+
+  end
+
+  def encrypt
+
+  end
+
+  def decrypt
+
+  end
+
+end
+
+
+# 
+class DecKey
+  def initialize
+
+  end
+
+  def encrypt
+
+  end
+
+  def decrypt
+
+  end
+
+end
+
+
+#
+class DiffieHellmanKey
+  def initialize
+
+  end
+
+  def encrypt
+
+  end
+
+  def decrypt
+
+  end
+
+end
+
+
+#
+class RsaKey
+  def initialize
+
+  end
+
+  def encrypt
+
+  end
+
+  def decrypt
+
+  end
+
+end

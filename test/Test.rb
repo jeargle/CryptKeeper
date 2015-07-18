@@ -73,7 +73,9 @@ statCrack.permuteKeys("NAT")
 #statCrack.permuteKeys("XZ")
 
 # (XZ)
-statCrack.switchKeys("X","Z")
+statCrack.switchKeys("X","J")
+statCrack.switchKeys("T","H")
+statCrack.switchKeys("F","U")
 
 statReceipt = statCrack.decrypt(statCypherText)
 puts "statReceipt: #{statReceipt}"
