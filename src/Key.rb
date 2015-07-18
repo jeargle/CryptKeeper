@@ -49,12 +49,9 @@ class RotKey
 
   def initialize(alphabet, offset)
     #puts alphabet
-    @keyHash = Hash.new()
-    (0..alphabet.length-1).each do |i|
-      #puts i
-      #puts alphabet[i].chr
-      @keyHash[alphabet[i].chr] = alphabet[(i+offset)%alphabet.length].chr
-    end
+    # @keyHash = Hash.new()
+    @alphabet = alphabet
+    set_offset(offset)
   end
 
   def encrypt(message)
@@ -80,6 +77,14 @@ class RotKey
       end
     end
     return message
+  end
+
+  def set_offset(offset)
+    @offset = offset
+    @keyHash = {}
+    (0..alphabet.length-1).each do |i|
+      @keyHash[alphabet[i].chr] = alphabet[(i+@offset)%alphabet.length].chr
+    end
   end
 
 end

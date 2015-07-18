@@ -29,8 +29,9 @@ def stage2
   puts "message: #{message}"
 
   abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-  (0..26).each do |i|
-    rot = RotKey.new(abc,i)
+  rot = RotKey.new(abc,0)
+  (1..26).each do |i|
+    rot.set_offset(i)
     receipt = rot.encrypt(message)
     puts "receipt #{i}: #{receipt}"
   end
