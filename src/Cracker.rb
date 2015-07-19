@@ -9,25 +9,13 @@
 #   Generated Keys are held and can be accessed.
 
 
-# Compare character occurance statistics to RotKeys
-#   should be child of StatCracker
-class RotCracker
-
-  def initialize(text=nil)
-
-  end
-
-  def crack(cypherText, alphabet)
-
-  end
-
-end
-
-
 # Cracks RotKey, CustomKey
 # Cracks monoalphabetic cypher
 class StatCracker
 
+  # The +new+ class method initializes the class.
+  # === Parameters
+  # _text_ = example text used to create alphabet statistics
   def initialize(text=nil)
     if text then
       @statAlphabet = generateAlphabetStats(text)
@@ -37,8 +25,9 @@ class StatCracker
     puts "statAlphabet:   #{@statAlphabet}"
   end
 
-  # Create letter-ordering statistics from a
-  # given text.
+  # Create letter-ordering statistics from a given text.
+  # === Parameters
+  # _text_ = example text used to create alphabet statistics
   def generateAlphabetStats(text)
     statAlphabetCount = Hash.new
     text.each_byte do |i|
@@ -59,8 +48,9 @@ class StatCracker
     return statAlphabet
   end
 
-  # Get letter-ordering for the cypherText
-  # to decrypt.
+  # Get letter-ordering for the cypherText to decrypt.
+  # === Parameters
+  # _cypherText_ = message to be decyphered
   def generateCypherTextStats(cypherText)
     statCypherTextCount = Hash.new
     cypherText.each_byte do |i|
@@ -92,44 +82,76 @@ class StatCracker
     #print "\n"
   end
 
+  # Switch two characters in the alphabet key.
+  # === Parameters
+  # _key1_ = character switched with key2
+  # _key2_ = character switched with key1
   def switchKeys(key1, key2)
     if !@keyHash then
-      puts "switchKeys: WTF, dumbass?  You need to generate a key first!"
+      puts "switchKeys: Error - no existing key."
       return
     end
+
     if !@keyHash[key1] || !@keyHash[key2] then
-      puts "Yeah, it would help if you asked to switch some keys that actually existed, unlike #{key1} and #{key2}."
+      if !@keyHash[key1] && !@keyHash[key2] then
+        puts "switchKeys: Error - characters #{key1} and #{key2} are not in the alphabet."
+      elsif !@keyHash[key1] then
+        puts "switchKeys: Error - character #{key1} is not in the alphabet."
+      else
+        puts "switchKeys: Error - character #{key2} is not in the alphabet."
+      end
       return
     end
+
     @keyHash[key1],@keyHash[key2] = @keyHash[key2],@keyHash[key1]
   end
 
+  # Permute a set of characters in the alphabet key.
+  # === Parameters
+  # _permuteString_ = string of characters in the alphabet
   def permuteKeys(permuteString)
     (0..permuteString.length-2).each do |i|
       switchKeys(permuteString[i].chr,permuteString[i+1].chr)
     end
   end
 
+  # TODO - check this method
+  # Switch two values in the alphabet key?
+  # === Parameters
+  # _val1_ = character switched with val2
+  # _val2_ = character switched with val1
   def switchValues(val1, val2)
     if !@keyHash then
-      puts "switchValue: WTF, dumbass?  You need to generate a key first!"
+      puts "switchValues: Error - no existing key."
       return
     end
     if !@keyHash.key(val1) || !@keyHash.key(val2) then
-      puts "switchValues: Yeah, it would help if you asked to switch some values that actually existed, unlike #{@keyHash.key(val1)} and #{@keyHash.key(val2)}."
+      if !@keyHash.key(val1) && !@keyHash.key(val2) then
+        puts "switchValues: Error - characters #{@keyHash.key(val1)} and #{@keyHash.key(val2)} are not in the alphabet."
+      elsif !@keyHash.key(val1) then
+        puts "switchValues: Error - character #{@keyHash.key(val1)} is not in the alphabet."
+      else
+        puts "switchValues: Error - character #{@keyHash.key(val2)} is not in the alphabet."
+      end
+
       return
     end
+
     key1 = @keyHash.key(val1)
     key2 = @keyHash.key(val2)
     @keyHash[key1],@keyHash[key2] = @keyHash[key2],@keyHash[key1]
   end
 
   # Encrypt with the cracked key.
+  # === Parameters
+  # _message_ = message to encrypt
   def encrypt(message)
     
   end
 
-  # 
+  # Decrypt with the cracked key.
+  # === Parameters
+  # _message_ = message to decrypt
   def decrypt(cypherText)
     if !@statCypherText then
       generateCypherTextStats(cypherText)
@@ -148,30 +170,62 @@ class StatCracker
 end
 
 
-# Crack VigenereKey
-class VigenereCracker
+# Compare character occurance statistics to RotKeys
+#   should be child of StatCracker
+class RotCracker
 
-  def initialize
+  # The +new+ class method initializes the class.
+  # === Parameters
+  # _text_ = example text used to create alphabet statistics
+  def initialize(text=nil)
 
   end
 
-  def crack(message)
-    #return key
+  # Decrypt with the cracked key.
+  # === Parameters
+  # _message_ = message to decrypt
+  def decrypt(cypherText, alphabet)
+
   end
 
 end
 
+
+# Crack VigenereKey
+class VigenereCracker
+
+  # The +new+ class method initializes the class.
+  # === Parameters
+  # _text_ = example text used to create alphabet statistics
+  def initialize
+
+  end
+
+  # Decrypt with the cracked key.
+  # === Parameters
+  # _message_ = message to decrypt
+  def decrypt(message)
+
+  end
+
+end
 
 
 # Encrypt with new alphabet corresponding to frequencies of characters in
 #   message
 class HomophonicCracker
 
+  # The +new+ class method initializes the class.
+  # === Parameters
+  # _text_ = example text used to create alphabet statistics
   def initialize
 
   end
 
-  def crack
+  # Decrypt with the cracked key.
+  # === Parameters
+  # _message_ = message to decrypt
+  def decrypt
 
   end
 
