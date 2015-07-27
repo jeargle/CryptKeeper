@@ -35,12 +35,13 @@ def stage2
   puts
 
   abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-  rot = RotKey.new(abc,0)
-  (1..26).each do |i|
-    rot.set_offset(i)
-    receipt = rot.encrypt(message)
-    puts "receipt #{i}:\n#{receipt}"
-  end
+  rotCracker = RotCracker.new(abc)
+  rotCracker.try_all(message)
+  rotCracker.key = 7
+  receipt = rotCracker.decrypt(message)
+  puts
+  puts "key:\n#{rotCracker.key}"
+  puts "receipt:\n#{receipt}"
   puts
 
 end
@@ -134,6 +135,6 @@ end
 
 
 #stage1()
-#stage2()
-stage3()
+stage2()
+# stage3()
 

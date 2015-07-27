@@ -171,21 +171,37 @@ end
 
 
 # Compare character occurance statistics to RotKeys
-#   should be child of StatCracker
 class RotCracker
+
+  attr_reader :alphabet, :key
+  attr_writer :alphabet, :key
 
   # The +new+ class method initializes the class.
   # === Parameters
-  # _text_ = example text used to create alphabet statistics
-  def initialize(text=nil)
-
+  # _alphabet_ = alphabet to use
+  def initialize(alphabet="ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+    @alphabet = alphabet
+    @key = 0
   end
-
+  
+  # Try all keys.
+  # === Parameters
+  # _cypherText_ = message to decrypt
+  def try_all(cypherText)
+    rot = RotKey.new(@alphabet,0)
+    (1..@alphabet.length).each do |i|
+      rot.set_offset(i)
+      receipt = rot.decrypt(cypherText)
+      puts "receipt #{i}:\n#{receipt}"
+    end
+  end
+  
   # Decrypt with the cracked key.
   # === Parameters
-  # _message_ = message to decrypt
-  def decrypt(cypherText, alphabet)
-
+  # _cypherText_ = message to decrypt
+  def decrypt(cypherText)
+    rot = RotKey.new(@alphabet,@key)
+    return rot.decrypt(cypherText)
   end
 
 end

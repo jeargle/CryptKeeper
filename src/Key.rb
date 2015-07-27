@@ -69,9 +69,10 @@ class RotKey
 
   def decrypt(cypherText)
     message = ""
+    valHash = @keyHash.invert()
     cypherText.each_byte do |i|
       if @keyHash.has_value?(i.chr) then
-	message += @keyHash.index(i.chr)
+	message += valHash[i.chr]
       else
 	message += i.chr
       end
