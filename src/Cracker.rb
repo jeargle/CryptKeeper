@@ -210,17 +210,21 @@ end
 # Crack VigenereKey
 class VigenereCracker
 
+  attr_reader :alphabet, :key
+  attr_writer :alphabet, :key
+
   # The +new+ class method initializes the class.
   # === Parameters
-  # _text_ = example text used to create alphabet statistics
-  def initialize
-
+  # _alphabet_ = alphabet to use
+  def initialize(alphabet="ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+    @alphabet = alphabet
+    @key = ""
   end
 
   # Decrypt with the cracked key.
   # === Parameters
-  # _message_ = message to decrypt
-  def decrypt(message)
+  # _cypherText_ = message to decrypt
+  def decrypt(cypherText)
 
   end
 
