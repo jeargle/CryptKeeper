@@ -149,15 +149,15 @@ end
 # 
 class HomophonicKey
 
-  def initialize
+  def initialize(key, alphabet)
 
   end
 
-  def encrypt
+  def encrypt(message)
 
   end
 
-  def decrypt
+  def decrypt(cypherText)
 
   end
 
@@ -167,15 +167,15 @@ end
 # 
 class EnigmaKey
 
-  def initialize
+  def initialize(key, alphabet)
 
   end
 
-  def encrypt
+  def encrypt(message)
 
   end
 
-  def decrypt
+  def decrypt(cypherText)
 
   end
 
@@ -184,15 +184,16 @@ end
 
 # 
 class DecKey
-  def initialize
+  
+  def initialize(key, alphabet)
 
   end
 
-  def encrypt
+  def encrypt(message)
 
   end
 
-  def decrypt
+  def decrypt(cypherText)
 
   end
 
@@ -201,15 +202,16 @@ end
 
 #
 class DiffieHellmanKey
-  def initialize
+  
+  def initialize(key, alphabet)
 
   end
 
-  def encrypt
+  def encrypt(message)
 
   end
 
-  def decrypt
+  def decrypt(cypherText)
 
   end
 
@@ -218,15 +220,16 @@ end
 
 #
 class RsaKey
-  def initialize
+  
+  def initialize(key, alphabet)
 
   end
 
-  def encrypt
+  def encrypt(message)
 
   end
 
-  def decrypt
+  def decrypt(cypherText)
 
   end
 
